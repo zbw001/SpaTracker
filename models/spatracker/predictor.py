@@ -23,11 +23,12 @@ class SpaTrackerPredictor(torch.nn.Module):
     def __init__(
         self, checkpoint="cotracker/checkpoints/cotracker_stride_4_wind_8.pth",
         interp_shape=(384, 512),
+        support_grid_size=6,
         seq_length=16
     ):
         super().__init__()
         self.interp_shape = interp_shape
-        self.support_grid_size = 6
+        self.support_grid_size = support_grid_size
         model = build_spatracker(checkpoint, seq_length=seq_length)
 
         self.model = model
